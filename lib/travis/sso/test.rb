@@ -17,9 +17,11 @@ module Travis
         !!self.class.user
       end
 
-      def allow(request)
+      def login(request)
+        return unless self.class.user
+
         set_user(request, self.class.user)
-        super
+        pass(request)
       end
     end
   end
